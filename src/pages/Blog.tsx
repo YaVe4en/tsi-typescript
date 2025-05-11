@@ -11,17 +11,18 @@ const Blog = () => {
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
 	useEffect(() => {
-		const fetchData = async () => {
-			const response = await axios.get("http://localhost:3000/api/data")
-
-			setData(response.data.data)
-		}
-
 		fetchData()
 	}, [])
 
-	const addPost = () => {
-		setData([...data, newPost])
+	const fetchData = async () => {
+		const response = await axios.get("http://localhost:3000/api/data")
+
+		setData(response.data.data)
+	}
+
+	const addPost = async () => {
+		await axios.post("http://localhost:3000/api/data", newPost)
+		fetchData()
 	}
 
 	return (
