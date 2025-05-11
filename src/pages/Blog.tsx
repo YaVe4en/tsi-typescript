@@ -4,6 +4,7 @@ import { Modal } from "../components/Modal"
 import { Input } from "../components/Input"
 import type { IPost } from "../interfaces/post"
 import axios from "axios"
+import { Helmet } from "react-helmet"
 
 const Blog = () => {
 	const [newPost, setNewPost] = useState<IPost>({ title: "", body: "" })
@@ -27,6 +28,15 @@ const Blog = () => {
 
 	return (
 		<>
+			<Helmet>
+				<meta charSet="utf-8" />
+				<title>Блог Pavlov Dmitry</title>
+				<meta name="description" content="Блог Pavlov Dmitry" />
+				<meta
+					name="keywords"
+					content="ТСИ, КФЕН, ИМИ, ИВТ-22-2, БЛОГ, ПАВЛОВ ДМИТРИЙ, О ПАВЛОВ ДМИТРИЙ И ЕГО БЛОГ"
+				/>
+			</Helmet>
 			<Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
 				<div className="flex flex-col gap-3">
 					<div className="text-2xl font-semibold">Создание поста</div>
