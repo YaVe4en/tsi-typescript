@@ -1,9 +1,9 @@
-import type { FC, HTMLAttributes, ReactNode } from "react"
+import type { ButtonHTMLAttributes, FC, ReactNode } from "react"
 
 type ButtonSize = "small" | "medium" | "large"
 type ButtonColor = "primary" | "secondary"
 
-interface IButtonProps extends HTMLAttributes<HTMLButtonElement> {
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	size?: ButtonSize
 	color?: ButtonColor
 	children?: ReactNode

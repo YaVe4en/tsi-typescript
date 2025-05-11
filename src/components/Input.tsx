@@ -1,6 +1,6 @@
-import type { FC, HTMLAttributes } from "react"
+import type { FC, InputHTMLAttributes } from "react"
 
-interface IInputProps extends HTMLAttributes<HTMLInputElement> {
+interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
 	label?: string
 }
 

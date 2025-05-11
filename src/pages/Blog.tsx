@@ -1,20 +1,24 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "../components/Button"
 import { Modal } from "../components/Modal"
 import { Input } from "../components/Input"
-
-const initData = [
-	{ title: "Пост 1", body: "Содержание поста 1" },
-	{ title: "Пост 2", body: "Содержание поста 2" },
-	{ title: "Пост 3", body: "Содержание поста 3" },
-	{ title: "Пост 4", body: "Содержание поста 4" },
-	{ title: "Пост 5", body: "Содержание поста 5" },
-]
+import type { IPost } from "../interfaces/post"
+import axios from "axios"
 
 const Blog = () => {
-	const [newPost, setNewPost] = useState({ title: "", body: "" })
-	const [data, setData] = useState(initData)
-	const [isModalOpen, setIsModalOpen] = useState(false)
+	const [newPost, setNewPost] = useState<IPost>({ title: "", body: "" })
+	const [data, setData] = useState<IPost[]>([])
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const response = await axios.get("http://localhost:3000/api/data")
+
+			setData(response.data.data)
+		}
+
+		fetchData()
+	}, [])
 
 	const addPost = () => {
 		setData([...data, newPost])
