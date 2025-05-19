@@ -10,7 +10,7 @@ export const Input: FC<IInputProps> = ({ label = "", ...rest }) => {
 			<div className="font-semibold">{label}</div>
 
 			<input
-				className="p-2 rounded-md border border-gray bg-transparent w-full"
+				className="p-2 rounded-md border bg-transparent w-full border-gray-300"
 				{...rest}
 			/>
 		</div>
